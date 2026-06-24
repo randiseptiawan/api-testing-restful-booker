@@ -1,0 +1,25 @@
+# Postman system files
+.postman/
+
+# Node modules (if using Newman + HTML reporter)
+node_modules/
+
+# Newman reports
+reports/
+*.html
+*.xml
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment secrets 
+*.env
+*.json.backup
+
+# Optional: Postman exported sensitive files
+*-local.json

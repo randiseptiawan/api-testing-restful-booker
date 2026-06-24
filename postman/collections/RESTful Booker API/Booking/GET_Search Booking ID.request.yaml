@@ -1,0 +1,5 @@
+$kind: http-request
+name: GET_Search Booking ID
+url: "{{base_url}}/booking/{{booking_id}}"
+method: GET
+order: 4000

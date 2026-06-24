@@ -1,0 +1,31 @@
+$kind: http-request
+name: PUT_Update Booking
+url: "{{base_url}}/booking/{{booking_id}}"
+method: PUT
+headers:
+  Cookie: token={{token}}
+  Content-Type: application/JSON
+body:
+  type: json
+  content: "{\r
+
+    \  \"firstname\": \"Robins\",\r
+
+    \  \"lastname\": \"Hoods\",\r
+
+    \  \"totalprice\": 250,\r
+
+    \  \"depositpaid\": true,\r
+
+    \  \"bookingdates\": {\r
+
+    \    \"checkin\": \"2026-06-25\",\r
+
+    \    \"checkout\": \"2026-06-29\"\r
+
+    \  },\r
+
+    \  \"additionalneeds\": \"Lunch\"\r
+
+    }"
+order: 5397

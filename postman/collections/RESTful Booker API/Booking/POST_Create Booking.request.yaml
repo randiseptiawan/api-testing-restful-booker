@@ -1,0 +1,31 @@
+$kind: http-request
+url: "{{base_url}}/booking"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"firstname\": \"Robin\",\r
+
+    \  \"lastname\": \"Hood\",\r
+
+    \  \"totalprice\": 312,\r
+
+    \  \"depositpaid\": true,\r
+
+    \  \"bookingdates\": {\r
+
+    \    \"checkin\": \"2026-06-24\",\r
+
+    \    \"checkout\": \"2026-06-30\"\r
+
+    \  },\r
+
+    \  \"additionalneeds\": \"Breakfast\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: pm.environment.set("booking_id", pm.response.json().bookingid);
+    language: text/javascript
+order: 6000

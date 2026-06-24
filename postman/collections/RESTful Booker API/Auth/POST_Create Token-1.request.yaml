@@ -1,0 +1,36 @@
+$kind: http-request
+name: POST_Create Token
+url: "{{base_url}}/auth"
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"username\": \"admin\",\r
+
+    \  \"password\": \"password123\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.environment.set(\"token\", pm.response.json().token);\r
+
+      \r
+
+      pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Token exists\", function () {\r
+
+      \    const data = pm.response.json();\r
+
+      \    pm.expect(data.token).to.exist;\r
+
+      });"
+    language: text/javascript
+order: 2000

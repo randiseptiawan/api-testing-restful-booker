@@ -1,0 +1,15 @@
+$kind: http-request
+name: PATCH_Partial Update Booking
+url: "{{base_url}}/booking/{{booking_id}}"
+method: PATCH
+headers:
+  Cookie: token={{token}}
+  Content-Type: application/JSON
+body:
+  type: json
+  content: "{\r
+
+    \    \"lastname\": \"Hoodsy\"\r
+
+    }"
+order: 1000

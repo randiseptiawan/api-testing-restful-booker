@@ -1,5 +1,5 @@
 $kind: http-request
-name: POST_Create Booking
+name: POST_Create Booking Invalid
 url: "{{base_url}}/booking"
 method: POST
 body:
@@ -9,8 +9,6 @@ body:
     \  \"firstname\": \"Robin\",\r
 
     \  \"lastname\": \"Hood\",\r
-
-    \  \"totalprice\": 312,\r
 
     \  \"depositpaid\": true,\r
 
@@ -27,26 +25,11 @@ body:
     }"
 scripts:
   - type: afterResponse
-    code: "pm.test(\"Status code is 200\", function () {\r
+    code: "pm.test(\"Status code is 400\", function () {\r
 
-      \    pm.response.to.have.status(200);\r
+      \    pm.response.to.have.status(400);\r
 
-      });\r
-
-      \r
-
-      const data = pm.response.json();\r
-
-      \r
-
-      pm.test(\"Booking ID generated\", function () {\r
-
-      \    pm.expect(data.bookingid).to.exist;\r
-
-      });\r
-
-      \r
-
-      pm.environment.set(\"booking_id\", data.bookingid);"
+      });"
     language: text/javascript
-order: 11000
+examples: .resources/POST_Create Booking Invalid.resources/examples
+order: 10000

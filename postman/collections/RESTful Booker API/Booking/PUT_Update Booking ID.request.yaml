@@ -1,0 +1,58 @@
+$kind: http-request
+url: "{{base_url}}/booking/{{booking_id}}"
+method: PUT
+headers:
+  Cookie: token={{token}}
+  Content-Type: application/JSON
+body:
+  type: json
+  content: "{\r
+
+    \  \"firstname\": \"Robins\",\r
+
+    \  \"lastname\": \"Hoods\",\r
+
+    \  \"totalprice\": 250,\r
+
+    \  \"depositpaid\": true,\r
+
+    \  \"bookingdates\": {\r
+
+    \    \"checkin\": \"2026-06-25\",\r
+
+    \    \"checkout\": \"2026-06-29\"\r
+
+    \  },\r
+
+    \  \"additionalneeds\": \"Breakfast\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const data = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Firstname is Robins\", function () {\r
+
+      \    pm.expect(data.firstname).to.eql(\"Robins\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Lastname is Hoods\", function () {\r
+
+      \    pm.expect(data.lastname).to.eql(\"Hoods\");\r
+
+      });"
+    language: text/javascript
+order: 9000

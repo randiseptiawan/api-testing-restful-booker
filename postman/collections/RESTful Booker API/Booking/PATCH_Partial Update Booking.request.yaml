@@ -12,4 +12,24 @@ body:
     \    \"lastname\": \"Hoodsy\"\r
 
     }"
-order: 1000
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const data = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Lastname is Hoodsy\", function () {\r
+
+      \    pm.expect(data.lastname).to.eql(\"Hoodsy\");\r
+
+      });"
+    language: text/javascript
+order: 2000

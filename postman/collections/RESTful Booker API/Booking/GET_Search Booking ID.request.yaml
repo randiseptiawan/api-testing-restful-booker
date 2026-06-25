@@ -2,4 +2,24 @@ $kind: http-request
 name: GET_Search Booking ID
 url: "{{base_url}}/booking/{{booking_id}}"
 method: GET
-order: 4000
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      const data = pm.response.json();\r
+
+      \r
+
+      pm.test(\"Firstname is Robin\", function () {\r
+
+      \    pm.expect(data.firstname).to.eql(\"Robin\");\r
+
+      });"
+    language: text/javascript
+order: 7000

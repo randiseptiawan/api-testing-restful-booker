@@ -2,4 +2,12 @@ $kind: http-request
 name: GET_Search All Booking ID
 url: "{{base_url}}/booking/"
 method: GET
-order: 3000
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Status code is 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });"
+    language: text/javascript
+order: 5000

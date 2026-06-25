@@ -1,4 +1,4 @@
-# RESTful Booker API Testing Portfolio
+# RESTful Booker API Testing
 
 ## Overview
 
